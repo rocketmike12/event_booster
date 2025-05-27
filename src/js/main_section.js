@@ -4,14 +4,14 @@ const render = function (data) {
 	data.forEach((el) => {
 		let newCard = document.createElement("li");
 		newCard.innerHTML = `
-			<svg class="event-list-icon"></svg>
+			<div class="event-list-leaf"></div>
 			<img class="event-list-img" src="${el.images[0].url}" alt="">
 			<h2 class="event-list-title">${el.name}</h2>
 			<p class="event-list-date">${el.dates.start.localDate}</p>
 			<p class="event-list-location"><svg class="event-list-location-icon"></svg>${el._embedded.venues[0].name}</p>
 		`;
 		newCard.className = "event-list-item";
-		document.body.appendChild(newCard);
+		document.querySelector(".event-list").appendChild(newCard);
 	});
 };
 
