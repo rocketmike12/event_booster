@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -9,49 +9,51 @@
 
 	<body>
 		<header></header>
-    <main>
-      <div class="overlay">
-        <div class="modal" data-modal>
-          <button type="button" class="close-btn"></button>
-          <img data-modal-avatar src="" alt="avatar" class="modal-avatar" />
-          <div class="modal-container">
-            <img data-modal-img src="" alt="" class="modal-img" />
-            <ul class="modal-info">
-              <li class="modal-info-item">
-                <h3 class="modal-title">INFO</h3>
-                <p data-modal-info class="modal-text"></p>
-              </li>
-              <li class="modal-info-item">
-                <h3 class="modal-title">WHEN</h3>
-                <p data-modal-info class="modal-text"></p>
-              </li>
-              <li class="modal-info-item">
-                <h3 class="modal-title">WHERE</h3>
-                <p data-modal-info class="modal-text"></p>
-              </li>
-              <li class="modal-info-item">
-                <h3 class="modal-title">WHO</h3>
-                <p data-modal-info class="modal-text"></p>
-              </li>
-              <li class="modal-info-item">
-                <h3 class="modal-title">PRICES</h3>
-                <ul class="modal-prices">
-                  <li class="modal-prices-item">
-                    <p data-modal-info class="modal-prices-text"></p>
-                    <button type="submit">BUY TICKETS</button>
-                  </li>
-                  <li class="modal-prices-item">
-                    <p data-modal-info class="modal-prices-text"></p>
-                    <button type="submit">BUY TICKETS</button>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <a class="modal-more-btn">MORE FROM THIS AUTHOR</a>
-        </div>
-      </div>
-    </main>
-    <footer></footer>
-  </body>
+		<main>
+			<div class="overlay">
+				<div class="modal" data-modal>
+					<button type="button" class="close-btn"></button>
+					<img data-modal-avatar src="" alt="avatar" class="modal-avatar" />
+					<div class="modal-container">
+						<img data-modal-img src="" alt="" class="modal-img" />
+						<ul class="modal-info">
+							<li class="modal-info-item">
+								<h3 class="modal-title">INFO</h3>
+								<p data-modal-info="info" class="modal-text"></p>
+							</li>
+							<li class="modal-info-item">
+								<h3 class="modal-title">WHEN</h3>
+								<p data-modal-info="when" class="modal-text"></p>
+							</li>
+							<li class="modal-info-item">
+								<h3 class="modal-title">WHERE</h3>
+								<p data-modal-info="where" class="modal-text"></p>
+							</li>
+							<li class="modal-info-item">
+								<h3 class="modal-title">WHO</h3>
+								<p data-modal-info="who" class="modal-text"></p>
+							</li>
+							<li class="modal-info-item">
+								<h3 class="modal-title">PRICES</h3>
+								<ul class="modal-prices">
+									<li class="modal-prices-item">
+										<p data-modal-info="price-standart" class="modal-prices-text"></p>
+										<button type="submit">BUY TICKETS</button>
+									</li>
+									<li class="modal-prices-item">
+										<p data-modal-info="price-vip" class="modal-prices-text"></p>
+										<button type="submit">BUY TICKETS</button>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<a class="modal-more-btn">MORE FROM THIS AUTHOR</a>
+				</div>
+			</div>
+		</main>
+		<footer></footer>
+
+		<script type="module" src="./src/js/modal.js"></script>
+	</body>
 </html>
