@@ -1,42 +1,75 @@
-const eventsData = [
-  {
-    img: "img/eurovision.svg",
-    name: "Eurovision 2021 Final",
-    place: "Palace of Ukraine",
-  },
-  {
-    img: "img/",
-    name: "Black Eyed Peas",
-    place: "VDNH",
-  },
-  {
-    img: "img/",
-    name: "LP",
-    place: "Palace of Ukraine",
-  },
-  // добавить остальные карточки так же...
-];
+const events = Array.from({ length: 103 }, (_, i) => ({
+  id: i + 1,
+  title: `Подія ${i + 1}`,
+  date: "2025-05-26",
+  image: "https://via.placeholder.com/150x100?text=Event",
+}));
 
-const main = document.createElement("main");
-main.classList.add("event-gallery");
+const eventsPerPage = 21;
+let currentPage = 1;
 
-const ul = document.createElement("ul");
-ul.classList.add("event-list");
+const refs = {
+  eventsList: document.querySelector(".js-events"),
+  pagination: document.querySelector(".js-pagination"),
+};
 
-eventsData.forEach((event) => {
-  const li = document.createElement("li");
-  li.classList.add("event-card");
+// Генерація карток подій
+function renderEvents(page) {
+  const start = (page - 1) * eventsPerPage;
+  const end = start + eventsPerPage;
+  const pageEvents = events.slice(start, end);
 
-  li.innerHTML = `
-    <img src="${event.img}" alt="${event.name}" />
-    <div class="event-info">
-      <p class="event-name">${event.name}</p>
-      <p class="event-place">${event.place}</p>
-    </div>
+  refs.eventsList.innerHTML = pageEvents
+    .map(
+      (event) => `
+      <li class="event-card">
+        <img src="${event.image}" alt="${event.title}" />
+        <h3>${event.title}</h3>
+        <p>${event.date}</p>
+      </li>
+    `
+    )
+    .join("");
+}
+
+// Генерація кнопок пагінації
+function renderPagination() {
+  const totalPages = Math.ceil(events.length / eventsPerPage);
+  let buttons = "";
+
+  for (let i = 1; i <= totalPages; i++) {
+    buttons += `<button class="page-btn${
+      i === currentPage ? " active" : ""
+    }" data-page="${i}">${i}</button>`;
+  }
+
+  refs.pagination.innerHTML = `
+    <button class="prev" ${currentPage === 1 ? "disabled" : ""}>←</button>
+    ${buttons}
+    <button class="next" ${
+      currentPage === totalPages ? "disabled" : ""
+    }>→</button>
   `;
+}
 
-  ul.appendChild(li);
+// Обробка кліків
+refs.pagination.addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+
+  const totalPages = Math.ceil(events.length / eventsPerPage);
+
+  if (e.target.classList.contains("prev")) {
+    if (currentPage > 1) currentPage--;
+  } else if (e.target.classList.contains("next")) {
+    if (currentPage < totalPages) currentPage++;
+  } else {
+    currentPage = Number(e.target.dataset.page);
+  }
+
+  renderEvents(currentPage);
+  renderPagination();
 });
 
-main.appendChild(ul);
-document.body.appendChild(main);
+// Початковий рендер
+renderEvents(currentPage);
+renderPagination();
