@@ -51,9 +51,9 @@ function renderCard(card) {
 
 	fields.forEach((field) => {
 		switch (field.dataset.modalInfo) {
-			case "info":
-				field.textContent = card.info || "No info available"
-				break
+			// case "info":
+			// 	field.textContent = card.info || "No info available"
+			// 	break
 			case "when":
 				field.innerHTML = `${card.dates.localDate} <br/> ${card.dates.localTime} (${card.timezone})`
 				break
@@ -64,10 +64,18 @@ function renderCard(card) {
 				field.textContent = card.who.join(", ")
 				break
 			case "price-standart":
-				field.textContent = `Standart ${card.price.standart.min}-${card.price.standart.max} UAH`
+				field.innerHTML = `
+                <svg class="svg" width="29" height="20">
+					<use href="./src/symbol-defs.svg#icon-barcode"></use>
+				</svg>
+                Standart ${card.price.standart.min}-${card.price.standart.max} UAH`
 				break
 			case "price-vip":
-				field.textContent = `VIP ${card.price.vip.min}-${card.price.vip.max} UAH`
+				field.innerHTML = `
+                <svg class="svg" width="29" height="20">
+					<use href="./src/symbol-defs.svg#icon-barcode"></use>
+				</svg>
+                VIP ${card.price.vip.min}-${card.price.vip.max} UAH`
 				break
 		}
 	})
