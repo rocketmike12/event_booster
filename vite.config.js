@@ -4,18 +4,18 @@ import glob from "fast-glob"
 import { fileURLToPath } from "url"
 
 export default defineConfig({
+	base: "https://rocketmike12.github.io/goiteens_fe_4_final_project/",
 	build: {
-		minify: false, // disable minification
+		minify: false,
 		rollupOptions: {
 			input: Object.fromEntries(
 				glob
 					.sync(["./*.html", "./pages/**/*.html"])
 					.map((file) => [path.relative(__dirname, file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))])
 			),
-			// output unminified CSS file
 			output: {
 				assetFileNames: "assets/[name].[ext]",
 			},
 		},
-	},
+	}
 })
