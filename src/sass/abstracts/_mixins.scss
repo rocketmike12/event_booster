@@ -15,3 +15,21 @@
 	flex-wrap: $flex-wrap;
 	flex-direction: $flex-direction;
 }
+
+@mixin mob($breakpoint) {
+	@media screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin tab($breakpoint) {
+	@media screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin desk($breakpoint) {
+	@media screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
