@@ -13,9 +13,6 @@ export default defineConfig({
 					.sync(["./*.html", "./pages/**/*.html"])
 					.map((file) => [path.relative(__dirname, file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))])
 			),
-			output: {
-				assetFileNames: "assets/[name].[ext]",
-			},
 		},
 	}
 })
