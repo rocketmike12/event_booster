@@ -1,38 +1,26 @@
-.card {
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.event-card-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+.pagination-nav {
   display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #1c1c1c;
-  color: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-  }
-
-  &__img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  &__content {
-    padding: 12px;
-  }
-
-  &__title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 8px 0;
-  }
-
-  &__place,
-  &__date {
-    font-size: 14px;
-    margin: 0;
-    color: #ffffff;
-  }
+.pagination-btn.active {
+  background-color: #007bff;
+  color: white;
 }

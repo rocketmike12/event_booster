@@ -1,6 +1,6 @@
 const events = Array.from({ length: 103 }, (_, i) => ({
   id: i + 1,
-  title: `Подія ${i + 1}`,
+  title: `Event ${i + 1}`,
   date: "2025-05-26",
   image: "https://via.placeholder.com/150x100?text=Event",
 }));
@@ -22,10 +22,12 @@ function renderEvents(page) {
   refs.eventsList.innerHTML = pageEvents
     .map(
       (event) => `
-      <li class="event-card">
+      <li class="event-grid">
         <img src="${event.image}" alt="${event.title}" />
-        <h3>${event.title}</h3>
-        <p>${event.date}</p>
+        <div class="event-content">
+          <h3>${event.title}</h3>
+          <p>${event.date}</p>
+        </div>
       </li>
     `
     )
@@ -38,15 +40,17 @@ function renderPagination() {
   let buttons = "";
 
   for (let i = 1; i <= totalPages; i++) {
-    buttons += `<button class="page-btn${
+    buttons += `<button class="pagination-btn${
       i === currentPage ? " active" : ""
     }" data-page="${i}">${i}</button>`;
   }
 
   refs.pagination.innerHTML = `
-    <button class="prev" ${currentPage === 1 ? "disabled" : ""}>←</button>
+    <button class="nav-btn prev" ${
+      currentPage === 1 ? "disabled" : ""
+    }>←</button>
     ${buttons}
-    <button class="next" ${
+    <button class="nav-btn next" ${
       currentPage === totalPages ? "disabled" : ""
     }>→</button>
   `;
