@@ -29,6 +29,7 @@
 		padding: 28px 17px 56px 50px;
 		text-align: left;
 	}
+
 	@media (min-width: 1200px) {
 		padding: 62px 30px;
 		transform: scale(0.95) translate(-55%, -52.5%);
@@ -45,6 +46,7 @@
 		@media (min-width: 768px) {
 			margin-bottom: 42px;
 		}
+
 		@media (min-width: 1200px) {
 			width: 132px;
 			height: 132px;
@@ -54,6 +56,7 @@
 
 	&-container {
 		@include flex(center, flex-start, 30px, no-wrap, row);
+
 		@media (min-width: 1200px) {
 			gap: 60px;
 		}
@@ -67,6 +70,7 @@
 			width: 233px;
 			height: 416px;
 		}
+
 		@media (min-width: 1200px) {
 			width: 360px;
 			height: 583px;
@@ -91,6 +95,7 @@
 		@media (min-width: 768px) {
 			font-size: 16px;
 		}
+
 		@media (min-width: 1200px) {
 			// font-size: 18px;
 		}
@@ -98,9 +103,11 @@
 
 	&-list {
 		@include flex(center, center, 10px, no-wrap, column);
+
 		@media (min-width: 768px) {
 			align-items: flex-start;
 		}
+
 		@media (min-width: 1200px) {
 			gap: 20px;
 			justify-content: space-between;
@@ -109,6 +116,7 @@
 
 	&-prices {
 		@include flex(center, center, 20px, no-wrap, column);
+
 		@media (min-width: 768px) {
 			align-items: flex-start;
 		}
@@ -127,7 +135,10 @@
 		font-weight: 500;
 		font-size: 14 px;
 		margin-top: 10px;
-		transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+		transition:
+			border-color 0.3s,
+			background-color 0.3s,
+			color 0.3s;
 
 		&:hover {
 			color: $accent-alt;
@@ -135,6 +146,7 @@
 			background-color: transparent;
 		}
 	}
+
 	&-more-btn {
 		display: block;
 		border: 1px solid $accent-alt;
@@ -156,6 +168,7 @@
 		@media (min-width: 768px) {
 			margin-top: 53px;
 		}
+
 		@media (min-width: 1200px) {
 			margin-top: 40px;
 		}
@@ -176,6 +189,7 @@
 			right: 30px;
 		}
 	}
+
 	&-svg {
 		fill: $accent-alt;
 		transition: fill 0.3s;
