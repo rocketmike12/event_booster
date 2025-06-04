@@ -1,10 +1,10 @@
-import path from "path"
-import { defineConfig } from "vite"
-import glob from "fast-glob"
-import { fileURLToPath } from "url"
+import path from "path";
+import { defineConfig } from "vite";
+import glob from "fast-glob";
+import { fileURLToPath } from "url";
 
 export default defineConfig({
-	base: "https://rocketmike12.github.io/goiteens_fe_4_final_project/",
+	base: "https://rocketmike12.github.io/event_booster/",
 	build: {
 		minify: false,
 		rollupOptions: {
@@ -14,8 +14,8 @@ export default defineConfig({
 					.map((file) => [path.relative(__dirname, file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))])
 			),
 			output: {
-        		assetFileNames: "assets/[name].[ext]",
-      		},
+				assetFileNames: "assets/[name].[ext]",
+			},
 		},
-	}
-})
+	},
+});
