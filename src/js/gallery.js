@@ -1,75 +1,76 @@
-const events = Array.from({ length: 103 }, (_, i) => ({
-  id: i + 1,
-  title: `Подія ${i + 1}`,
-  date: "2025-05-26",
-  image: "https://via.placeholder.com/150x100?text=Event",
-}));
+let events;
 
 const eventsPerPage = 21;
 let currentPage = 1;
 
-const refs = {
-  eventsList: document.querySelector(".js-events"),
-  pagination: document.querySelector(".js-pagination"),
-};
+const eventList = document.querySelector(".event-list");
+const pagination = document.querySelector(".pagination");
 
-// Генерація карток подій
+// Рендер карток подій
 function renderEvents(page) {
-  const start = (page - 1) * eventsPerPage;
-  const end = start + eventsPerPage;
-  const pageEvents = events.slice(start, end);
+	const start = (page - 1) * eventsPerPage;
+	const end = start + eventsPerPage;
+	const pageEvents = events.slice(start, end);
 
-  refs.eventsList.innerHTML = pageEvents
-    .map(
-      (event) => `
-      <li class="event-card">
-        <img src="${event.image}" alt="${event.title}" />
-        <h3>${event.title}</h3>
-        <p>${event.date}</p>
-      </li>
-    `
-    )
-    .join("");
+	eventList.innerHTML = pageEvents
+		.map(
+			(event) => `
+			<li class="event-list-item">
+				<div class="event-list-leaf"></div>
+				<img class="event-list-img" src="${event.images[0].url}" alt="">
+				<h2 class="event-list-title">${event.name}</h2>
+				<p class="event-list-date">${event.dates.start.localDate}</p>
+				<p class="event-list-location">
+					<svg class="event-list-location-icon"><use></use></svg>
+					${event._embedded.venues[0].name}
+				</p>
+			</li>
+		`
+		)
+		.join("");
 }
 
-// Генерація кнопок пагінації
+// Рендер кнопок пагінації
 function renderPagination() {
-  const totalPages = Math.ceil(events.length / eventsPerPage);
-  let buttons = "";
+	const totalPages = Math.ceil(events.length / eventsPerPage);
+	let buttons = "";
 
-  for (let i = 1; i <= totalPages; i++) {
-    buttons += `<button class="page-btn${
-      i === currentPage ? " active" : ""
-    }" data-page="${i}">${i}</button>`;
-  }
+	for (let i = 1; i <= totalPages; i++) {
+		buttons += `<button class="page-btn${i === currentPage ? " active" : ""}" data-page="${i}">${i}</button>`;
+	}
 
-  refs.pagination.innerHTML = `
+	pagination.innerHTML = `
     <button class="prev" ${currentPage === 1 ? "disabled" : ""}>←</button>
     ${buttons}
-    <button class="next" ${
-      currentPage === totalPages ? "disabled" : ""
-    }>→</button>
+    <button class="next" ${currentPage === totalPages ? "disabled" : ""}>→</button>
   `;
 }
 
-// Обробка кліків
-refs.pagination.addEventListener("click", (e) => {
-  if (e.target.tagName !== "BUTTON") return;
+// Обробка кліків списку сторінок
+pagination.addEventListener("click", (e) => {
+	if (e.target.tagName !== "BUTTON") return;
 
-  const totalPages = Math.ceil(events.length / eventsPerPage);
+	const totalPages = Math.ceil(events.length / eventsPerPage);
 
-  if (e.target.classList.contains("prev")) {
-    if (currentPage > 1) currentPage--;
-  } else if (e.target.classList.contains("next")) {
-    if (currentPage < totalPages) currentPage++;
-  } else {
-    currentPage = Number(e.target.dataset.page);
-  }
+	if (e.target.classList.contains("prev")) {
+		if (currentPage > 1) currentPage--;
+	} else if (e.target.classList.contains("next")) {
+		if (currentPage < totalPages) currentPage++;
+	} else {
+		currentPage = Number(e.target.dataset.page);
+	}
 
-  renderEvents(currentPage);
-  renderPagination();
+	renderEvents(currentPage);
+	renderPagination();
 });
 
-// Початковий рендер
-renderEvents(currentPage);
-renderPagination();
+async function getEvents() {
+	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
+	res = await res.json();
+	events = res._embedded.events;
+	renderEvents(currentPage);
+	renderPagination();
+}
+
+// Отримати і зарендерити події і сторінки
+getEvents();
