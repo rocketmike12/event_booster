@@ -1,6 +1,12 @@
 let events;
 
-const eventsPerPage = 21;
+let eventsPerPage;
+if (window.screen.width >= 786 && window.screen.width < 1280) {
+	eventsPerPage = 21;
+} else {
+	eventsPerPage = 20;
+}
+
 let currentPage = 1;
 
 const eventList = document.querySelector(".event-list");
@@ -21,7 +27,7 @@ function renderEvents(page) {
 				<h2 class="event-list-title">${event.name}</h2>
 				<p class="event-list-date">${event.dates.start.localDate}</p>
 				<p class="event-list-location">
-					<svg class="event-list-location-icon"><use></use></svg>
+					<svg class="event-list-location-icon" width="7px" height="10px"><use href="src/symbol-defs.svg#icon-place"></use></svg>
 					${event._embedded.venues[0].name}
 				</p>
 			</li>
@@ -39,38 +45,28 @@ function renderPagination() {
 		buttons += `<button class="page-btn${i === currentPage ? " active" : ""}" data-page="${i}">${i}</button>`;
 	}
 
-	pagination.innerHTML = `
-    <button class="prev" ${currentPage === 1 ? "disabled" : ""}>←</button>
-    ${buttons}
-    <button class="next" ${currentPage === totalPages ? "disabled" : ""}>→</button>
-  `;
+	pagination.innerHTML = buttons;
+}
+
+async function getEvents() {
+	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=135&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
+	res = await res.json();
+	events = res._embedded.events;
+	renderEvents(currentPage);
+	renderPagination();
 }
 
 // Обробка кліків списку сторінок
 pagination.addEventListener("click", (e) => {
 	if (e.target.tagName !== "BUTTON") return;
 
-	const totalPages = Math.ceil(events.length / eventsPerPage);
-
-	if (e.target.classList.contains("prev")) {
-		if (currentPage > 1) currentPage--;
-	} else if (e.target.classList.contains("next")) {
-		if (currentPage < totalPages) currentPage++;
-	} else {
-		currentPage = Number(e.target.dataset.page);
-	}
+	currentPage = Number(e.target.dataset.page);
 
 	renderEvents(currentPage);
 	renderPagination();
+
+	window.scrollTo(0, 0);
 });
-
-async function getEvents() {
-	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=100&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
-	res = await res.json();
-	events = res._embedded.events;
-	renderEvents(currentPage);
-	renderPagination();
-}
 
 // Отримати і зарендерити події і сторінки
 getEvents();

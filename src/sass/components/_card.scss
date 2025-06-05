@@ -1,4 +1,7 @@
 .event-list-item {
-	width: 194px;
-	height: 312px;
+	width: 138px;
+
+	@include tab(768px) {
+		width: 194px;
+	}
 }
