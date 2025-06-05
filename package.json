@@ -1,11 +1,11 @@
 {
-	"name": "goiteens_fe_4_final_project",
+	"name": "event_booster",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build --base=/goiteens_fe_4_final_project/",
+		"build": "vite build --base=/event_booster/",
 		"preview": "vite preview",
 		"watch": "npx vite build --watch"
 	},
