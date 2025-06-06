@@ -13,18 +13,6 @@
 	text-align: center;
 }
 
-.pagination-nav {
-	display: flex;
-	justify-content: center;
-	gap: 6px;
-	margin-top: 16px;
-}
-
-.pagination-btn.active {
-	background-color: #ff00dd;
-	color: white;
-}
-
 .event.image {
 	width: 180px;
 	height: 227px;
@@ -41,8 +29,4 @@
 
 .event-list-item {
 	width: 138px;
-
-	@include tab(768px) {
-		width: 194px;
-	}
 }
