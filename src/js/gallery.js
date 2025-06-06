@@ -1,8 +1,15 @@
 const events = Array.from({ length: 103 }, (_, i) => ({
+<<<<<<< HEAD
 	id: i + 1,
 	title: `Подія ${i + 1}`,
 	date: "2025-05-26",
 	image: "https://via.placeholder.com/150x100?text=Event",
+=======
+  id: i + 1,
+  title: `Event ${i + 1}`,
+  date: "2025-05-26",
+  image: "https://via.placeholder.com/150x100?text=Event",
+>>>>>>> fd71f41c0df20c2dfcf0b25085b6dcabd6b25383
 }));
 
 const eventsPerPage = 21;
@@ -19,13 +26,22 @@ function renderEvents(page) {
 	const end = start + eventsPerPage;
 	const pageEvents = events.slice(start, end);
 
+<<<<<<< HEAD
 	refs.eventsList.innerHTML = pageEvents
 		.map(
 			(event) => `
       <li class="event-card">
+=======
+  refs.eventsList.innerHTML = pageEvents
+    .map(
+      (event) => `
+      <li class="event-grid">
+>>>>>>> fd71f41c0df20c2dfcf0b25085b6dcabd6b25383
         <img src="${event.image}" alt="${event.title}" />
-        <h3>${event.title}</h3>
-        <p>${event.date}</p>
+        <div class="event-content">
+          <h3>${event.title}</h3>
+          <p>${event.date}</p>
+        </div>
       </li>
     `
 		)
@@ -37,6 +53,7 @@ function renderPagination() {
 	const totalPages = Math.ceil(events.length / eventsPerPage);
 	let buttons = "";
 
+<<<<<<< HEAD
 	for (let i = 1; i <= totalPages; i++) {
 		buttons += `<button class="page-btn${i === currentPage ? " active" : ""}" data-page="${i}">${i}</button>`;
 	}
@@ -45,6 +62,22 @@ function renderPagination() {
     <button class="prev" ${currentPage === 1 ? "disabled" : ""}>←</button>
     ${buttons}
     <button class="next" ${currentPage === totalPages ? "disabled" : ""}>→</button>
+=======
+  for (let i = 1; i <= totalPages; i++) {
+    buttons += `<button class="pagination-btn${
+      i === currentPage ? " active" : ""
+    }" data-page="${i}">${i}</button>`;
+  }
+
+  refs.pagination.innerHTML = `
+    <button class="nav-btn prev" ${
+      currentPage === 1 ? "disabled" : ""
+    }>←</button>
+    ${buttons}
+    <button class="nav-btn next" ${
+      currentPage === totalPages ? "disabled" : ""
+    }>→</button>
+>>>>>>> fd71f41c0df20c2dfcf0b25085b6dcabd6b25383
   `;
 }
 
