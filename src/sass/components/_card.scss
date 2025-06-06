@@ -38,3 +38,11 @@
 	size: 16px;
 	display: flex;
 }
+
+.event-list-item {
+	width: 138px;
+
+	@include tab(768px) {
+		width: 194px;
+	}
+}

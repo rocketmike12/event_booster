@@ -1,0 +1,27 @@
+.pagination {
+	width: 233px;
+	margin: 0 auto;
+	margin-top: 60px;
+
+	@include flex(space-between, center, 5px, _, _);
+
+	.page-btn {
+		width: 30px;
+		height: 30px;
+		background-color: transparent;
+
+		@include flex(center, center, _, _, _);
+
+		@include typography(inherit, 400, 16px, 100%, 0%, center);
+
+		&.active {
+			color: $accent;
+			border: 1px solid $accent;
+			border-radius: 10px 0;
+		}
+	}
+
+	@include desk(1280px) {
+		margin-top: 80px;
+	}
+}
