@@ -1,0 +1,14 @@
+.event-list {
+	@include flex(_, _, 4px, wrap, row);
+	row-gap: 30px;
+
+	@include tab(768px) {
+		@include flex(_, _, 13px, _, _);
+		row-gap: 45px;
+	}
+
+	@include desk(1280px) {
+		@include flex(_, _, 56px, _, _);
+		row-gap: 50px;
+	}
+}

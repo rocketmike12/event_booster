@@ -54,4 +54,17 @@ textarea {
 
 body {
 	font-family: "Montserrat";
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	background-image: url("/src/img/body-bg-mob.jpg");
+
+	@include tab(768px) {
+		background-image: url("/src/img/body-bg-tab.jpg");
+	}
+
+	@include desk(1280px) {
+		background-image: url("/src/img/body-bg-desk.jpg");
+	}
 }

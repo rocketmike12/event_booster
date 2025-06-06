@@ -1,0 +1,15 @@
+.container {
+	margin: 0 auto;
+
+	width: 280px;
+
+	@include tab(768px) {
+		width: 610px;
+		border: 1px solid $dgrey;
+	}
+
+	@include desk(1280px) {
+		width: 1050px;
+		padding: 52px;
+	}
+}

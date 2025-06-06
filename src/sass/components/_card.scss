@@ -37,3 +37,11 @@
 .event-content {
 	size: 16px;
 }
+
+.event-list-item {
+	width: 138px;
+
+	@include tab(768px) {
+		width: 194px;
+	}
+}
