@@ -1,26 +1,39 @@
 .events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
-  list-style: none;
-  padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 16px;
+	list-style: none;
+	padding: 0;
 }
 
 .event-card-item {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 8px;
-  text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 8px;
+	text-align: center;
 }
 
 .pagination-nav {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	margin-top: 16px;
 }
 
 .pagination-btn.active {
-  background-color: #007bff;
-  color: white;
+	background-color: #007bff;
+	color: white;
+}
+
+.event.image {
+	width: 180px;
+	height: 227px;
+}
+
+.event.title {
+	color: #dc56c5;
+}
+
+.event-content {
+	size: 16px;
 }

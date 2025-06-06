@@ -1,19 +1,77 @@
 <!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event</title>
-    <link rel="stylesheet" href="src/sass/main.scss" />
-  </head>
-  <body>
-    <main>
-      <section class="gallery-section">
-        <ul class="event-list js-events"></ul>
-        <div class="pagination js-pagination"></div>
-      </section>
-    </main>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>EVENT BOOSTER</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+		<link href="src/sass/main.scss" rel="stylesheet" />
+	</head>
 
-    <script src="index.js"></script>
-  </body>
+	<body>
+		<header></header>
+
+		<main>
+			<div class="overlay">
+				<div class="modal" data-modal>
+					<button type="button" class="close-btn">
+						<svg class="close-svg" width="32" height="32">
+							<use href="./src/symbol-defs.svg#icon-close"></use>
+						</svg>
+					</button>
+					<img data-modal-img src="" alt="avatar" class="modal-avatar" />
+					<div class="modal-container">
+						<img data-modal-img src="" alt="" class="modal-img" />
+						<ul class="modal-list list">
+							<li class="modal-list-item">
+								<h3 class="modal-title">INFO</h3>
+								<p data-modal-info="info" class="modal-text">
+									Atlas Weekend is the largest music festival in Ukraine. More than 200 artists will create a proper music festival atmosphere on 10 stages
+								</p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">WHEN</h3>
+								<p data-modal-info="when" class="modal-text"></p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">WHERE</h3>
+								<p data-modal-info="where" class="modal-text"></p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">WHO</h3>
+								<p data-modal-info="who" class="modal-text"></p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">PRICES</h3>
+								<ul class="modal-prices">
+									<li class="modal-prices-item">
+										<p data-modal-info="price-standart" class="modal-text modal-prices-text"></p>
+										<button class="modal-btn" type="submit">BUY TICKETS</button>
+									</li>
+									<li class="modal-prices-item">
+										<p data-modal-info="price-vip" class="modal-text modal-prices-text"></p>
+										<button class="modal-btn" type="submit">BUY TICKETS</button>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<a class="modal-more-btn" class="modal-more-btn">MORE FROM THIS AUTHOR</a>
+				</div>
+			</div>
+
+			<section class="gallery-section">
+				<ul class="event-list js-events"></ul>
+				<div class="pagination js-pagination"></div>
+			</section>
+		</main>
+
+		<footer></footer>
+
+		<script type="module" src="./src/js/modal.js"></script>
+		<script type="module" src="./src/js/gallery.js"></script>
+	</body>
+	>>>>>>> d7fd2722c653f17db26f68cbef893bd2b5dc5ad8
 </html>
