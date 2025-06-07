@@ -1,19 +1,11 @@
-.events-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-	gap: 16px;
-	list-style: none;
-	padding: 0;
-}
-
-.event-card-item {
+.event-list-item {
+	width: 138px;
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	padding: 8px;
-	text-align: center;
 }
 
-.event.image {
+.event-list-img {
 	width: 180px;
 	height: 227px;
 }
@@ -29,4 +21,12 @@
 
 .event-list-item {
 	width: 138px;
+
+	.event-list-title {
+		color: #dc56c5;
+	}
+
+	@include tab(768px) {
+		width: 194px;
+	}
 }
