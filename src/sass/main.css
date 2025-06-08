@@ -307,37 +307,48 @@ body {
   fill: #dc56c5;
 }
 
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
-  list-style: none;
-  padding: 0;
-}
-
-.event-card-item {
-  border: 1px solid #ccc;
+.event-list-item {
+  width: 200px;
+  height: 300px;
+  border: 1px solid rgba(220, 86, 197, 0.3019607843);
   border-radius: 8px;
   padding: 8px;
-  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.event.image {
+.event-list-img {
   width: 180px;
   height: 227px;
+  gap: 5px;
 }
 
 .event.title {
   color: #dc56c5;
-}
-
-.event-content {
+  gap: 5x;
   size: 16px;
-  display: flex;
 }
 
 .event-list-item {
   width: 138px;
+}
+.event-list-item .event.-list-location {
+  color: #fff;
+  gap: 5px;
+  size: 14px;
+}
+.event-list-item .event-list-date {
+  color: #fff;
+  gap: 5px;
+  size: 16px;
+}
+.event-list-item .event-list-title {
+  color: #dc56c5;
+}
+@media screen and (min-width: 768px) {
+  .event-list-item {
+    width: 194px;
+  }
 }
 
 .pagination {
