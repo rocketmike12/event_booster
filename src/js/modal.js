@@ -79,6 +79,8 @@ function renderCard(card) {
 				</svg>
                 VIP ${card.price.vip.min}-${card.price.vip.max} UAH`;
 				break;
+			case "author":
+				field.href = `author/?author=${JSON.stringify(card.who)}`;
 		}
 	});
 }
