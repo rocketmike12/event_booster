@@ -1,0 +1,13 @@
+@import "./abstracts/_variables.scss";
+@import "./abstracts/_mixins.scss";
+
+@import "./base/_reset.scss";
+
+@import "./components/_container.scss";
+@import "./components/_modal.scss";
+@import "./components/_card.scss";
+@import "./components/_pagination.scss";
+
+@import "./layout/_header.scss";
+@import "./layout/_main_section.scss";
+@import "./layout/_footer.scss";

@@ -1,37 +1,42 @@
 .event-list-item {
 	width: 200px;
 	height: 300px;
-	border: 1px solid #dc56c54d;
 	border-radius: 8px;
 	padding: 8px;
 	flex-direction: column;
 	align-items: center;
 }
 
+.event-list-leaf {
+	border: 1px solid #dc56c54d;
+	border-radius: 50px 0;
+	width: 108px;
+	height: 101px;
+	@include tab(768px) {
+	}
+}
+
 .event-list-img {
 	width: 180px;
 	height: 227px;
 	gap: 5px;
+	border-radius: 50px 0;
 }
 
 .event-list-title {
+	@include typography(inherit, 700, 16px, 100%, 0%, center);
 	color: #dc56c5;
-	gap: 5x;
-	size: 16px;
 }
 
 .event-list-location {
+	@include typography(inherit, 400, 16px, 100%, 0%, center);
 	color: #fff;
-	gap: 5px;
-	size: 14px;
 }
 
 .event-list-date {
+	@include typography(inherit, 600, 16px, 100%, 0%, center);
 	color: #fff;
-	gap: 5px;
-	size: 16px;
 }
 
 @include tab(768px) {
-	width: 194px;
 }
