@@ -1,0 +1,19 @@
+.pagination{
+    margin: 0 auto;
+    display: flex;
+    gap: 5px;
+    background-color: transparent;
+}
+
+.page-btn{
+    background-color: transparent;
+    color: $el-desc-color;
+    padding: 5px 12px;
+        font-family: Montserrat;
+}
+
+.active{
+    color: $accent;
+    border: 1px solid $accent;
+    border-radius: 10px 0 10px 0;
+}

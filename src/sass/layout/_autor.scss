@@ -1,0 +1,18 @@
+.section-autor{
+    padding: 20px 0 119px 0;
+
+    background-position: top, center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: $dgrey;
+
+    background-image: url("../img/mb/png/main-body-bg-mb.png");
+
+    @include tab(768px){
+    background-image: url("../img/tablet/png/main-body-bg-tab.png");
+    }  
+
+    @include desk(1200px){
+        background-image: url("../img/desc/png/main-body-bg-desc.png");
+    } 
+}

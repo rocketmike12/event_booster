@@ -1,0 +1,16 @@
+.svg{
+    fill: white;
+    width: 60px;
+    height: 30px;
+
+    @include tab(768px){
+        width: 100px;
+        height: 50px;
+    }
+
+
+    @include desk(1200px){
+        width: 136px;
+        height: 67px;
+    }
+}

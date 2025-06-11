@@ -16,6 +16,22 @@
 	flex-direction: $flex-direction;
 }
 
+@mixin retina($dev-ratio, $dpi, $dppx){
+    @media (min-device-pixel-ratio:$dev-ratio),
+    (min-resolution:$dpi),
+    (min-resolution:$dppx)
+    {
+        @content;
+    }
+}
+
+@mixin bg-image($webp, $fallback, $gradient){
+    @supports (background-image: url("#{$webp}")){
+        background-image: $gradient, url("#{$webp}");
+    }
+    background-image: $gradient, url("#{$fallback}");
+}
+
 @mixin mob($breakpoint) {
 	@media screen and (min-width: $breakpoint) {
 		@content;

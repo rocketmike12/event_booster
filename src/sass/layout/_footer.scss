@@ -1,0 +1,23 @@
+.footer{
+    height: 0;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.desc-footer{
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: $lgrey;
+    max-width: 252px;
+
+    @include tab(768px){
+        max-width: none;
+    }
+}
+
+.footer-hart{
+    color: red;
+}
