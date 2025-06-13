@@ -15,15 +15,8 @@ header {
     position: relative;
 }
 
-.logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 .header-title {
-    max-width: 700px;
     color: #DC56C5;
-    font-size: 50px;
     line-height: 1.5;
     text-align: center;
     letter-spacing: 0.03em;
@@ -31,6 +24,7 @@ header {
     margin-bottom: 20px;
     font-family: Montserrat;
     font-weight: 900;
+    z-index: 1;
 }
 
 .select-wrap {
@@ -44,8 +38,6 @@ header {
 
 .search-by-name-wrap,
 .search-by-country-wrap {
-    max-width: 270px;
-    // height: 40px;
     background-color: #FFFFFF33;
     backdrop-filter: blur(20px);
 
@@ -82,10 +74,61 @@ header {
     background-repeat: no-repeat;
     background-position: left;
 }}
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 
+@include mob(320px) {
+    .select-wrap{
+        flex-wrap: wrap;
+    }
+    .header-title{
+        max-width: 260px;
+        font-size: 18px;
+    }
+    
+    .search-by-name-wrap,
+    .search-by-country-wrap{
+        max-width: 270px;
+    }
+
+    .logo {
+        max-width: 150px;
+    }
+
+}
 
 
+@include tab(768px) {
+    .header-title{
+        max-width: 400px;
+        font-size: 30px;
+    }
+    
+    .search-by-name-wrap,
+    .search-by-country-wrap{
+        max-width: 270px;
+    }
 
+    .logo {
+        max-width: 200px;
+    }
 
+}
+
+@include desk(1280px) {
+
+    .header-title{
+        max-width: 700px;
+        font-size: 50px;
+    }
+    
+    .search-by-name-wrap,
+    .search-by-country-wrap{
+        max-width: 270px;
+    }
+}
 
