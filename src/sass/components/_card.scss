@@ -9,15 +9,18 @@
 
 	@include flex(_, center, 5px, _, column);
 
-	.event-list-leaf {
+	&::before {
+		content: " ";
+
 		position: absolute;
 		top: 0;
 		right: 0;
 
-		border: 1px solid #dc56c54d;
-		border-radius: 50px 0;
-		width: 108px;
+		width: 109px;
 		height: 101px;
+
+		border: 1px solid #dc56c54d;
+		border-radius: 50px 0 50px 0;
 
 		@include tab(768px) {
 			width: 153px;

@@ -24,7 +24,6 @@ function renderEvents(page) {
 		.map(
 			(event) => `
 			<li class="event-list-item" data-id="${event.id}">
-				<div class="event-list-leaf"></div>
 				<div class="event-list-img" style="background-image: url(${event.images[0].url});"></div>
 				<h2 class="event-list-title">${event.name}</h2>
 				<p class="event-list-date">${event.dates.start.localDate}</p>
