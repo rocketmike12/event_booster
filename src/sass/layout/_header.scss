@@ -66,7 +66,7 @@ header {
 
 	border-radius: 20px;
 	padding-left: 20px;
-	color: #939393;
+	color: $lgrey;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.5;
@@ -76,6 +76,10 @@ header {
 	@include flex(center, _, _, _, _);
 
 	padding: 10px 30px;
+
+	input::placeholder {
+		color: inherit;
+	}
 
 	@include tab(768px) {
 		margin-top: 27px;
