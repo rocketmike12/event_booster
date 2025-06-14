@@ -1,42 +1,70 @@
 .event-list-item {
-	width: 200px;
-	height: 300px;
+	position: relative;
+
+	width: 138px;
+	height: 242px;
 	border-radius: 8px;
 	padding: 8px;
-	flex-direction: column;
-	align-items: center;
+
+	@include flex(_, center, 5px, _, column);
+
+	@include tab(768px) {
+		width: 194px;
+		height: 312px;
+	}
 }
 
 .event-list-leaf {
+	position: absolute;
+	top: 0;
+	right: 0;
+
 	border: 1px solid #dc56c54d;
 	border-radius: 50px 0;
 	width: 108px;
 	height: 101px;
+
 	@include tab(768px) {
+		width: 153px;
+		height: 143px;
 	}
 }
 
 .event-list-img {
-	width: 180px;
-	height: 227px;
+	width: 128px;
+	height: 161px;
 	gap: 5px;
 	border-radius: 50px 0;
+
+	@include tab(768px) {
+		width: 180px;
+		height: 227px;
+	}
 }
 
 .event-list-title {
-	@include typography(inherit, 700, 16px, 100%, 0%, center);
-	color: #dc56c5;
-}
+	@include typography(inherit, 700, 14px, 100%, 0%, center);
+	color: $accent;
 
-.event-list-location {
-	@include typography(inherit, 400, 16px, 100%, 0%, center);
-	color: #fff;
+	@include tab(768px) {
+		@include typography(inherit, 700, 16px, 100%, 0%, center);
+	}
 }
 
 .event-list-date {
-	@include typography(inherit, 600, 16px, 100%, 0%, center);
-	color: #fff;
+	@include typography(inherit, 400, 14px, 100%, 0%, center);
+	color: #ffffff;
+
+	@include tab(768px) {
+		@include typography(inherit, 400, 16px, 100%, 0%, center);
+	}
 }
 
-@include tab(768px) {
+.event-list-location {
+	@include typography(inherit, 600, 12px, 100%, 0%, center);
+	color: #ffffff;
+
+	@include tab(768px) {
+		@include typography(inherit, 600, 14px, 100%, 0%, center);
+	}
 }
