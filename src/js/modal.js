@@ -50,7 +50,9 @@ function renderCard(card) {
 	const imgs = modal.querySelectorAll("[data-modal-img]");
 	const fields = modal.querySelectorAll("[data-modal-info]");
 
-	imgs.forEach((img) => (img.src = card.image.url));
+	imgs.forEach((img) => {
+		img.style.backgroundImage = `url("${card.image.url}")`;
+	});
 
 	fields.forEach((field) => {
 		switch (field.dataset.modalInfo) {
