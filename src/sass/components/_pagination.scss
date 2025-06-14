@@ -1,19 +1,32 @@
-.pagination{
-    margin: 0 auto;
-    display: flex;
-    gap: 5px;
-    background-color: transparent;
-}
+.pagination {
+	width: 233px;
+	margin: 0 auto;
+	margin-top: 60px;
 
-.page-btn{
-    background-color: transparent;
-    color: $el-desc-color;
-    padding: 5px 12px;
-        font-family: Montserrat;
-}
+	@include flex(space-between, center, 5px, _, _);
 
-.active{
-    color: $accent;
-    border: 1px solid $accent;
-    border-radius: 10px 0 10px 0;
+	.page-btn,
+	.page-btn-dots {
+		width: 30px;
+		height: 30px;
+		background-color: transparent;
+
+		@include flex(center, center, _, _, _);
+
+		@include typography(inherit, 400, 16px, 100%, 0%, center);
+
+		&.active {
+			color: $accent;
+			border: 1px solid $accent;
+			border-radius: 10px 0;
+		}
+	}
+
+	.page-btn-dots {
+		pointer-events: none;
+	}
+
+	@include desk(1280px) {
+		margin-top: 80px;
+	}
 }

@@ -1,18 +1,14 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+
+	transition: 300ms;
+}
+
 ul {
 	margin: 0;
 	list-style: none;
 	padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li {
-	margin: 0;
 }
 
 a {
@@ -37,14 +33,8 @@ address {
 	font-style: normal;
 }
 
-* {
-	margin: 0;
-	box-sizing: border-box;
-}
-
 img {
 	display: block;
-	height: auto;
 	max-width: 100%;
 }
 
@@ -54,4 +44,17 @@ textarea {
 
 body {
 	font-family: "Montserrat";
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	background-image: url("/src/img/body-bg-mob.jpg");
+
+	@include tab(768px) {
+		background-image: url("/src/img/body-bg-tab.jpg");
+	}
+
+	@include desk(1280px) {
+		background-image: url("/src/img/body-bg-desk.jpg");
+	}
 }

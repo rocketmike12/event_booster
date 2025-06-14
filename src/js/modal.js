@@ -1,4 +1,5 @@
 const closeBtn = document.querySelector(".close-btn");
+const modalOverlay = document.querySelector(".overlay");
 
 function getPrice() {
 	let min = Math.floor(Math.random() * 501) + 500;
@@ -35,7 +36,7 @@ async function fetchCardDetails(id) {
 			localDate: data.dates.start.localDate,
 			localTime: data.dates.start.localTime.slice(0, 5),
 		},
-		timezone: data.dates.timezone.replace(/_/g, " "),
+		timezone: (data.dates.timezone || "World").replace(/_/g, " "),
 		venue: data._embedded.venues[0].city,
 		who: who,
 		price: getPrice(),
@@ -79,12 +80,28 @@ function renderCard(card) {
 				</svg>
                 VIP ${card.price.vip.min}-${card.price.vip.max} UAH`;
 				break;
+			case "author":
+				field.href = `author/?author=${JSON.stringify(card.who)}`;
 		}
 	});
 }
 
-fetchCardDetails("G5vVZbowlaVz5");
+const closeModal = function () {
+	modalOverlay.classList.add("hidden");
+};
 
-closeBtn.addEventListener("click", () => {
-	document.querySelector(".overlay").classList.add("hidden");
+closeBtn.addEventListener("click", closeModal);
+
+modalOverlay.addEventListener("click", (event) => {
+	if (event.target !== event.currentTarget) return;
+
+	closeModal();
 });
+
+window.addEventListener("keydown", (event) => {
+	if (event.key !== "Escape") return;
+
+	closeModal();
+});
+
+export { fetchCardDetails };

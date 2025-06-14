@@ -1,18 +1,15 @@
-.container{
-    padding: 0 20px 0 20px;
-    margin: 0 auto;
+.container {
+	margin: 0 auto;
 
-    @include tab(768px){
-        padding: 0 40px 0 40px;
-        width: 768px;
-    }
+	width: 280px;
 
-    @include desk(1200px){
-        width: 1200px;
-    }
+	@include tab(768px) {
+		width: 610px;
+		border: 1px solid $dgrey;
+	}
 
-    &-footer{
-        position: absolute;
-        bottom: 19px;
-    }
+	@include desk(1280px) {
+		width: 1050px;
+		padding: 58px;
+	}
 }
