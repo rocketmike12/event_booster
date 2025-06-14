@@ -1,5 +1,5 @@
 # Event Booster
-A fun little website for browsing Ticketmaster's current events
+A little website for browsing Ticketmaster's current events
 
 ## Tech stack
 
