@@ -1,6 +1,8 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
+
+	transition: 300ms;
 }
 
 ul {
@@ -33,7 +35,6 @@ address {
 
 img {
 	display: block;
-	height: auto;
 	max-width: 100%;
 }
 

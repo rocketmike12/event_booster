@@ -5,7 +5,8 @@
 
 	@include flex(space-between, center, 5px, _, _);
 
-	.page-btn {
+	.page-btn,
+	.page-btn-dots {
 		width: 30px;
 		height: 30px;
 		background-color: transparent;
@@ -19,6 +20,10 @@
 			border: 1px solid $accent;
 			border-radius: 10px 0;
 		}
+	}
+
+	.page-btn-dots {
+		pointer-events: none;
 	}
 
 	@include desk(1280px) {

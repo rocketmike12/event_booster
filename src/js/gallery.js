@@ -1,3 +1,5 @@
+import { fetchCardDetails } from "/src/js/modal.js";
+
 let events;
 
 let eventsPerPage;
@@ -21,9 +23,9 @@ function renderEvents(page) {
 	eventList.innerHTML = pageEvents
 		.map(
 			(event) => `
-			<li class="event-list-item">
+			<li class="event-list-item" data-id="${event.id}">
 				<div class="event-list-leaf"></div>
-				<img class="event-list-img" src="${event.images[0].url}" alt="">
+				<div class="event-list-img" style="background-image: url(${event.images[0].url});"></div>
 				<h2 class="event-list-title">${event.name}</h2>
 				<p class="event-list-date">${event.dates.start.localDate}</p>
 				<p class="event-list-location">
@@ -36,20 +38,36 @@ function renderEvents(page) {
 		.join("");
 }
 
-// Рендер кнопок пагінації
 function renderPagination() {
 	const totalPages = Math.ceil(events.length / eventsPerPage);
-	let buttons = "";
+	let buttons = [];
+	let pages = [];
 
-	for (let i = 1; i <= totalPages; i++) {
-		buttons += `<button class="page-btn${i === currentPage ? " active" : ""}" data-page="${i}">${i}</button>`;
+	if (currentPage <= 4) {
+		pages = [1, 2, 3, 4, 5, "...", totalPages];
+	} else if (currentPage >= totalPages - 3) {
+		pages = [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+	} else {
+		pages = [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
 	}
 
-	pagination.innerHTML = buttons;
+	for (let p of pages) {
+		if (p === "...") {
+			buttons.push(`<button class="page-btn-dots">...</button>`);
+		} else {
+			buttons.push(`
+					<button class="page-btn${p === currentPage ? " active" : ""}" data-page="${p}">
+						${p}
+					</button>
+			`);
+		}
+	}
+
+	pagination.innerHTML = buttons.join("");
 }
 
 async function getEvents() {
-	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=135&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
+	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=200&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
 	res = await res.json();
 	events = res._embedded.events;
 	renderEvents(currentPage);
@@ -66,6 +84,13 @@ pagination.addEventListener("click", (e) => {
 	renderPagination();
 
 	window.scrollTo(0, 0);
+});
+
+eventList.addEventListener("click", async (e) => {
+	if (e.target.parentElement.className !== "event-list-item") return;
+
+	await fetchCardDetails(e.target.parentElement.dataset.id);
+	document.querySelector(".overlay").classList.remove("hidden");
 });
 
 // Отримати і зарендерити події і сторінки
