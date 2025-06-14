@@ -6,12 +6,29 @@
 		<title>EVENT BOOSTER</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-		<link href="/src/sass/main.scss" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+		<link href="src/sass/main.scss" rel="stylesheet" />
 	</head>
 
 	<body>
-		<header></header>
+		<header>
+			<div class="container">
+				<div class="wrap">
+					<img src="./src/img/logo.png" alt="" class="logo" />
+
+					<h1 class="header-title">FIND BEST EVENTS AROUND THE WORLD</h1>
+					<div action="" class="select-wrap">
+						<div class="search-by-name-wrap">
+							<input type="text" id="search-by-name-input" placeholder="Start searching" class="input-search-by-name" />
+						</div>
+
+						<div class="search-by-country-wrap">
+							<select id="country" name="country" id="" class="select-country"></select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
 		<main>
 			<div class="overlay hidden">
@@ -74,5 +91,6 @@
 
 		<script type="module" src="./src/js/modal.js"></script>
 		<script type="module" src="./src/js/gallery.js"></script>
+		<script type="module" src="./src/js/search.js"></script>
 	</body>
 </html>
