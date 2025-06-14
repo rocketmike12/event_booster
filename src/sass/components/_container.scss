@@ -1,11 +1,13 @@
 .container {
 	margin: 0 auto;
 
+	border-left: 1px solid $dgrey;
+	border-right: 1px solid $dgrey;
+
 	width: 280px;
 
 	@include tab(768px) {
 		width: 610px;
-		border: 1px solid $dgrey;
 	}
 
 	@include desk(1280px) {
