@@ -3,7 +3,7 @@
 	height: 446px;
 }
 
-header {
+.header {
 	z-index: 1;
 
 	background-image: linear-gradient(180deg, rgba(13, 13, 13, 0.19) 0%, rgba(14, 14, 14, 0.8) 100%), url("/src/img/overlay.png");
@@ -151,7 +151,7 @@ header {
 		display: block;
 		width: 24px;
 		height: 24px;
-		background-image: url(../img/search.png);
+		background-image: url(/src/img/search.png);
 		background-repeat: no-repeat;
 		background-position: left;
 	}
