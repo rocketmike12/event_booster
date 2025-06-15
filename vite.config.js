@@ -15,7 +15,7 @@ export default defineConfig({
 					.map((file) => [path.relative(__dirname, file.slice(0, file.length - path.extname(file).length)), fileURLToPath(new URL(file, import.meta.url))])
 				),
 				...{author: resolve("author", "index.html")}
-			}
+			},
 			output: {
 				assetFileNames: "assets/[name].[ext]",
 			},
