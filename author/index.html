@@ -7,26 +7,63 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-		<link href="src/sass/main.scss" rel="stylesheet" />
+		<link href="/src/sass/main.scss" rel="stylesheet" />
 
 		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 	</head>
 
 	<body>
-		<header class="header">
-			<div class="container">
-				<a href="" class="logo" href="/">
-					<svg class="svg" fill="white">
-						<use href="/src/symbol-defs.svg#logo"></use>
-					</svg>
-				</a>
-			</div>
-		</header>
-
 		<main>
+			<div class="overlay hidden">
+				<div class="modal" data-modal>
+					<button type="button" class="close-btn">
+						<svg class="close-svg" width="32" height="32">
+							<use href="/src/symbol-defs.svg#icon-close" fill="#4c00fe"></use>
+						</svg>
+					</button>
+					<div data-modal-img src="" alt="avatar" class="modal-avatar"></div>
+					<div class="modal-container">
+						<div data-modal-img src="" alt="" class="modal-img"></div>
+						<ul class="modal-list list">
+							<li class="modal-list-item">
+								<h3 class="modal-title">INFO</h3>
+								<p data-modal-info="info" class="modal-text">
+									<i>no info available</i>
+								</p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">WHEN</h3>
+								<p data-modal-info="when" class="modal-text"></p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">WHERE</h3>
+								<p data-modal-info="where" class="modal-text"></p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">WHO</h3>
+								<p data-modal-info="who" class="modal-text"></p>
+							</li>
+							<li class="modal-list-item">
+								<h3 class="modal-title">PRICES</h3>
+								<ul class="modal-prices">
+									<li class="modal-prices-item">
+										<p data-modal-info="price-standart" class="modal-text modal-prices-text"></p>
+										<button class="modal-btn" type="submit">BUY TICKETS</button>
+									</li>
+									<li class="modal-prices-item">
+										<p data-modal-info="price-vip" class="modal-text modal-prices-text"></p>
+										<button class="modal-btn" type="submit">BUY TICKETS</button>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<a href="author/" class="modal-more-btn" data-modal-info="author" class="modal-more-btn">MORE FROM THIS AUTHOR</a>
+				</div>
+			</div>
 			<section class="author-hero">
 				<div class="container">
-					<h1 class="title-hero"></h1>
+					<h1 class="hero-title"></h1>
 				</div>
 			</section>
 

@@ -3,7 +3,7 @@ import { fetchCardDetails } from "/src/js/modal.js";
 // Global variables for events, pagination, and DOM elements
 let events = [];
 
-let eventsPerPage = window.screen.width >= 786 && window.screen.width < 1280 ? 21 : 20;
+let eventsPerPage = window.screen.width >= 768 && window.screen.width < 1280 ? 21 : 20;
 
 let currentPage = 1;
 let countryCode = "";
@@ -11,6 +11,7 @@ let searchQuery = "";
 
 const eventList = document.querySelector(".event-list");
 const pagination = document.querySelector(".pagination");
+const galleryContainer = document.querySelector(".gallery-container");
 const countrySelect = document.getElementById("country");
 
 const nameInput = document.getElementById("search-by-name-input");
@@ -122,6 +123,11 @@ function renderEvents(page) {
 			`
 		)
 		.join("");
+
+	galleryContainer.style.height = document.querySelector(".event-list").offsetHeight + "px";
+	setTimeout(() => {
+		galleryContainer.style.height = document.querySelector(".event-list").offsetHeight + "px";
+	}, 1000);
 }
 
 /**
@@ -153,10 +159,6 @@ function renderPagination() {
 	const totalPages = Math.ceil(events.length / eventsPerPage);
 	let buttons = [];
 	let pages = [];
-
-	console.log(totalPages);
-	console.log(events);
-	console.log(events.length);
 
 	if (totalPages <= 7) {
 		pages = [...Array(totalPages + 1).keys()].slice(1);
@@ -281,9 +283,9 @@ nameInput.addEventListener(
 );
 
 window.addEventListener("resize", () => {
-	if (eventsPerPage === (window.screen.width >= 786 && window.screen.width < 1280 ? 21 : 20)) return;
+	if (eventsPerPage === (window.screen.width >= 768 && window.screen.width < 1280 ? 21 : 20)) return;
 
-	eventsPerPage = window.screen.width >= 786 && window.screen.width < 1280 ? 21 : 20;
+	eventsPerPage = window.screen.width >= 768 && window.screen.width < 1280 ? 21 : 20;
 	renderEvents(currentPage);
 });
 

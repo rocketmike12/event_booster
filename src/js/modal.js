@@ -71,14 +71,14 @@ function renderCard(card) {
 			case "price-standart":
 				field.innerHTML = `
                 <svg class="svg" width="29" height="20">
-					<use href="./src/symbol-defs.svg#icon-barcode"></use>
+					<use href="/src/symbol-defs.svg#icon-barcode"></use>
 				</svg>
                 Standart ${card.price.standart.min}-${card.price.standart.max} UAH`;
 				break;
 			case "price-vip":
 				field.innerHTML = `
                 <svg class="svg" width="29" height="20">
-					<use href="./src/symbol-defs.svg#icon-barcode"></use>
+					<use href="/src/symbol-defs.svg#icon-barcode"></use>
 				</svg>
                 VIP ${card.price.vip.min}-${card.price.vip.max} UAH`;
 				break;

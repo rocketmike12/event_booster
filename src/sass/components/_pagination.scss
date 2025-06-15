@@ -1,34 +1,39 @@
-.pagination {
-	width: 233px;
-	margin: 0 auto;
-	margin-top: 60px;
+.pagination-section {
+	padding-top: 60px;
+	padding-bottom: 60px;
 
-	@include flex(_, center, 5px, _, _);
+	.pagination {
+		width: 233px;
+		margin: 0 auto;
 
-	.page-btn,
-	.page-btn-dots {
-		width: 30px;
-		height: 30px;
-		background-color: transparent;
+		@include flex(_, center, 5px, _, _);
 
-		@include flex(center, center, _, _, _);
+		.page-btn,
+		.page-btn-dots {
+			width: 30px;
+			height: 30px;
+			background-color: transparent;
 
-		color: #ffffff;
+			@include flex(center, center, _, _, _);
 
-		@include typography(inherit, 400, 16px, 100%, 0%, center);
+			color: #ffffff;
 
-		&.active {
-			color: $accent;
-			border: 1px solid $accent;
-			border-radius: 10px 0;
+			@include typography(inherit, 400, 16px, 100%, 0%, center);
+
+			&.active {
+				color: $accent;
+				border: 1px solid $accent;
+				border-radius: 10px 0;
+			}
+		}
+
+		.page-btn-dots {
+			pointer-events: none;
 		}
 	}
 
-	.page-btn-dots {
-		pointer-events: none;
-	}
-
 	@include desk(1280px) {
-		margin-top: 80px;
+		padding-top: 80px;
+		padding-bottom: 80px;
 	}
 }
