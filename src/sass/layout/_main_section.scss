@@ -1,3 +1,7 @@
+main {
+	padding-bottom: 64px;
+}
+
 .event-list {
 	@include flex(_, _, 4px, wrap, row);
 	row-gap: 30px;

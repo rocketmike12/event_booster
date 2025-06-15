@@ -1,23 +1,20 @@
-.footer{
-    height: 0;
-    position: relative;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+.footer {
+	margin: 0 auto;
+	padding: 16px;
 }
 
-.desc-footer{
-    font-weight: 400;
-    font-size: 16px;
-    text-align: center;
-    color: $lgrey;
-    max-width: 252px;
+.desc-footer {
+	font-weight: 400;
+	font-size: 16px;
+	text-align: center;
+	color: $lgrey;
+	max-width: 252px;
 
-    @include tab(768px){
-        max-width: none;
-    }
+	@include tab(768px) {
+		max-width: none;
+	}
 }
 
-.footer-hart{
-    color: red;
+.footer-heart {
+	color: red;
 }

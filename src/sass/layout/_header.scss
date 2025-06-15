@@ -27,6 +27,32 @@ header {
 		height: 387px;
 		padding-bottom: 133px;
 	}
+
+	.company-logo {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		&-svg {
+			background: linear-gradient(136.07deg, rgba(196, 196, 196, 0.03) 10.75%, rgba(196, 196, 196, 0) 92.33%);
+			backdrop-filter: blur(30px);
+
+			border-bottom-right-radius: 100%;
+
+			width: 107px;
+			height: 90px;
+
+			@include tab(768px) {
+				width: 179px;
+				height: 151px;
+			}
+
+			@include desk(1280px) {
+				width: 238px;
+				height: 201px;
+			}
+		}
+	}
 }
 
 .header-title {
