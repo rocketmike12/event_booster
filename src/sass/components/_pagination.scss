@@ -3,7 +3,7 @@
 	margin: 0 auto;
 	margin-top: 60px;
 
-	@include flex(space-between, center, 5px, _, _);
+	@include flex(_, center, 5px, _, _);
 
 	.page-btn,
 	.page-btn-dots {
@@ -12,6 +12,8 @@
 		background-color: transparent;
 
 		@include flex(center, center, _, _, _);
+
+		color: #ffffff;
 
 		@include typography(inherit, 400, 16px, 100%, 0%, center);
 

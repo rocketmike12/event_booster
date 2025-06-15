@@ -23,7 +23,7 @@ header {
 		padding-bottom: 123px;
 	}
 
-	@include desk(1200px) {
+	@include desk(1280px) {
 		height: 387px;
 		padding-bottom: 133px;
 	}
@@ -41,7 +41,7 @@ header {
 		@include typography(inherit, 900, 30px, 100%, 0%, center);
 	}
 
-	@include desk(1200px) {
+	@include desk(1280px) {
 		@include typography(inherit, 900, 50px, 100%, 0%, center);
 	}
 }
@@ -73,7 +73,7 @@ header {
 	letter-spacing: 0.03em;
 	margin-top: 25px;
 
-	@include flex(center, _, _, _, _);
+	@include flex(center, center, _, _, _);
 
 	padding: 10px 30px;
 
@@ -85,9 +85,17 @@ header {
 		margin-top: 27px;
 	}
 
-	@include desk(1200px) {
+	@include desk(1280px) {
 		margin-top: 52px;
 	}
+}
+
+.search-by-name-wrap {
+	@include flex(_, _, 76px, _, _);
+}
+
+.search-by-country-wrap {
+	@include flex(_, _, 68px, _, _);
 }
 
 .select-country,
@@ -96,6 +104,16 @@ header {
 	background: transparent;
 	padding: 0;
 	margin: 0;
+	color: $lgrey;
+	@include typography(inherit, 400, 16px, 100%, 0%, _);
+}
+
+.select-country {
+	width: 210px;
+}
+
+.input-search-by-name {
+	width: 122px;
 }
 
 .search-by-name-wrap {
@@ -158,7 +176,7 @@ header {
 	}
 }
 
-@include desk(1200px) {
+@include desk(1280px) {
 	.header-title {
 		max-width: 700px;
 		font-size: 50px;

@@ -58,3 +58,14 @@ body {
 		background-image: url("/src/img/body-bg-desk.jpg");
 	}
 }
+
+.error {
+	font-family: inherit;
+	color: $accent;
+	font-size: 24px;
+	font-weight: 900;
+	line-height: 100%;
+	letter-spacing: 0%;
+	text-align: center;
+	margin: 0 auto;
+}

@@ -2,7 +2,7 @@ const heroTitle = document.querySelector(".title-hero");
 
 const url = window.location.href;
 const params = new URL(url).searchParams;
-let raw = params.get('name');
+let raw = params.get("name");
 const authors = raw ? JSON.parse(decodeURIComponent(raw)) : [];
 
 let events;
@@ -58,18 +58,12 @@ function renderPagination() {
 
 async function getEvents() {
 	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=135&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
-    res = await res.json();
+	res = await res.json();
 
 	events = res._embedded.events;
-	
-	events = events.filter((el) =>
-		authors.every(authorPhrase =>
-				el._embedded.attractions.some(attr =>
-			attr.name.includes(authorPhrase)
-			)
-		)
-	);
-	
+
+	events = events.filter((el) => authors.every((authorPhrase) => el._embedded.attractions.some((attr) => attr.name.includes(authorPhrase))));
+
 	renderEvents(currentPage);
 	renderPagination();
 }
@@ -88,4 +82,3 @@ pagination.addEventListener("click", (e) => {
 
 // Отримати і зарендерити події і сторінки
 getEvents();
-// console.log(autorName);
