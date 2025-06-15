@@ -4,7 +4,8 @@ const heroTitle = document.querySelector(".hero-title");
 
 const url = window.location.href;
 const params = new URL(url).searchParams;
-let raw = params.get("name");
+let raw = params.get("author");
+
 const authors = raw ? JSON.parse(decodeURIComponent(raw)) : [];
 console.log(authors);
 
@@ -23,6 +24,9 @@ let currentPage = 1;
 
 const eventList = document.querySelector(".event-list");
 const pagination = document.querySelector(".pagination");
+const galleryContainer = document.querySelector(".gallery-container");
+
+const API_KEY = "P6IfSc5uHWe7okn8G7GGiEWObc48r3yE";
 
 // Рендер карток подій
 
@@ -76,6 +80,11 @@ function renderEvents(page) {
 			`
 		)
 		.join("");
+
+	galleryContainer.style.height = document.querySelector(".event-list").offsetHeight + "px";
+	setTimeout(() => {
+		galleryContainer.style.height = document.querySelector(".event-list").offsetHeight + "px";
+	}, 1000);
 }
 
 // Рендер кнопок пагінації
@@ -95,10 +104,6 @@ function renderPagination() {
 	const totalPages = Math.ceil(events.length / eventsPerPage);
 	let buttons = [];
 	let pages = [];
-
-	console.log(totalPages);
-	console.log(events);
-	console.log(events.length);
 
 	if (totalPages <= 7) {
 		pages = [...Array(totalPages + 1).keys()].slice(1);
@@ -126,12 +131,15 @@ function renderPagination() {
 }
 
 async function getEvents() {
-	let res = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?size=200&apikey=sES9o0k41AqBPlOAoQQCG4iYys2FN6TL");
+	const apiUrl = `https://app.ticketmaster.com/discovery/v2/events.json?size=200&apikey=${API_KEY}&keyword=${authors.join("%20")}`;
+
+	let res = await fetch(apiUrl);
+
 	res = await res.json();
 
-	events = res._embedded.events;
+	events = await res._embedded.events;
 
-	events = events.filter((el) => authors.every((authorPhrase) => el._embedded.attractions.some((attr) => attr.name.toLowerCase().includes(authorPhrase.toLowerCase()))));
+	// events = await events.filter((el) => authors.every((authorPhrase) => el._embedded.attractions.some((attr) => String(attr.name).includes(authorPhrase.toLowerCase()))));
 
 	renderEvents(currentPage);
 	renderPagination();
