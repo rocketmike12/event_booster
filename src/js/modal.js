@@ -56,9 +56,6 @@ function renderCard(card) {
 
 	fields.forEach((field) => {
 		switch (field.dataset.modalInfo) {
-			// case "info":
-			// 	field.textContent = card.info || "No info available"
-			// 	break
 			case "when":
 				field.innerHTML = `${card.dates.localDate} <br/> ${card.dates.localTime} (${card.timezone})`;
 				break;

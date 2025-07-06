@@ -15,7 +15,6 @@ const galleryContainer = document.querySelector(".gallery-container");
 const countrySelect = document.getElementById("country");
 
 const nameInput = document.getElementById("search-by-name-input");
-// const nameButton = document.getElementById("search-by-name-button");
 
 // API Key for Ticketmaster Discovery API
 const API_KEY = "P6IfSc5uHWe7okn8G7GGiEWObc48r3yE";
@@ -46,9 +45,7 @@ const countries = [
 	{ name: "Ukraine", code: "UA" },
 ];
 
-/**
- * Populates the country dropdown with options from the 'countries' array.
- */
+// Populates the country dropdown with options from the 'countries' array.
 function populateCountries() {
 	// Create a default "Select a country" option
 	const defaultOption = document.createElement("option");
@@ -65,37 +62,8 @@ function populateCountries() {
 	});
 }
 
-/**
- * Renders the event cards for the current page.
- * @param {number} page - The current page number to render.
- */
-
-// function renderEvents(page) {
-//     // Calculate the start and end indices for events on the current page
-//     const start = (page - 1) * eventsPerPage;
-//     const end = start + eventsPerPage;
-//     const pageEvents = events.slice(start, end); // Get events for the current page
-//
-//     // Generate HTML string for each event card
-//     eventList.innerHTML = pageEvents
-//         .map(
-//             (event) => `
-//             <li class="event-list-item">
-//                 <div class="event-list-leaf"></div>
-//                 <img class="event-list-img" src="${event.images[0]?.url || 'https://placehold.co/200x200/333333/FFFFFF?text=No+Image'}" alt="${event.name || 'Event image'}">
-//                 <div class="p-4 flex flex-col flex-grow">
-//                     <h2 class="event-list-title">${event.name || 'Unknown Event'}</h2>
-//                     <p class="event-list-date">${event.dates?.start?.localDate || 'Date N/A'}</p>
-//                     <p class="event-list-location">
-//                         <svg class="event-list-location-icon"><use href="#icon-location"></use></svg>
-//                         ${event._embedded?.venues?.[0]?.name || 'Location N/A'}
-//                     </p>
-//                 </div>
-//             </li>
-//         `
-//         )
-//         .join(""); // Join all card HTML strings
-// }
+// Renders the event cards for the current page.
+// @param {number} page - The current page number to render.
 
 function renderEvents(page) {
 	const start = (page - 1) * eventsPerPage;
@@ -130,30 +98,7 @@ function renderEvents(page) {
 	}, 1000);
 }
 
-/**
- * Renders the pagination buttons based on the total number of pages.
- */
-
-// function renderPagination() {
-//     // Calculate total pages based on the number of events and events per page
-//     const totalPages = Math.ceil(events.length / eventsPerPage);
-//     let buttons = ""; // String to build pagination buttons
-//
-//     // Generate buttons for each page
-//     for (let i = 1; i <= totalPages; i++) {
-//         buttons += `< button class= "page-btn${i === currentPage ? " active" : ""}" data - page="${i}" > ${ i }</button > `;
-//     }
-//
-//     // Update pagination HTML with previous, page buttons, and next buttons
-//     pagination.innerHTML = `
-//         <button class="prev px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed" ${currentPage === 1 ? "disabled" : ""}>&larr; Prev</button>
-//         ${buttons}
-//         <button class="next px-4 py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed" ${currentPage === totalPages ? "disabled" : ""}>Next &rarr;</button>
-//     `;
-//
-//     // Add click listeners to newly rendered pagination buttons
-//     attachPaginationListeners();
-// }
+// Renders the pagination buttons based on the total number of pages.
 
 function renderPagination() {
 	const totalPages = Math.ceil(events.length / eventsPerPage);
@@ -184,38 +129,6 @@ function renderPagination() {
 
 	pagination.innerHTML = buttons.join("");
 }
-
-/**
- * Attaches event listeners to pagination buttons.
- * This is called after `renderPagination` to ensure listeners are on the latest buttons.
- */
-
-// function attachPaginationListeners() {
-//     // Remove existing listeners to prevent duplicates
-//     pagination.removeEventListener("click", handlePaginationClick);
-//     // Add new listener
-//     pagination.addEventListener("click", handlePaginationClick);
-// }
-
-/**
- * Handles click events on pagination buttons.
- * @param {Event} e - The click event object.
- */
-
-// function handlePaginationClick(e) {
-//     if (e.target.tagName !== "BUTTON") return;
-//
-//     const totalPages = Math.ceil(events.length / eventsPerPage);
-//
-//     // Handle specific page number button click
-//     else if (e.target.classList.contains("page-btn")) {
-//         currentPage = Number(e.target.dataset.page);
-//     }
-//
-//     // Re-render events and pagination after page change
-//     renderEvents(currentPage);
-//     renderPagination();
-// }
 
 pagination.addEventListener("click", (e) => {
 	if (e.target.tagName !== "BUTTON") return;
@@ -266,21 +179,15 @@ async function getEvents() {
 }
 
 // Event listener for country dropdown change
-countrySelect.addEventListener(
-	"change",
-	_.debounce((e) => {
+countrySelect.addEventListener("change", _.debounce((e) => {
 		countryCode = e.target.value;
 		getEvents();
-	}, 300)
-);
+}, 300));
 
-nameInput.addEventListener(
-	"input",
-	_.debounce((e) => {
+nameInput.addEventListener("input", _.debounce((e) => {
 		searchQuery = e.target.value;
 		getEvents();
-	}, 300)
-);
+}, 300));
 
 window.addEventListener("resize", () => {
 	if (eventsPerPage === (window.screen.width >= 768 && window.screen.width < 1280 ? 21 : 20)) return;

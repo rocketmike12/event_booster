@@ -30,30 +30,6 @@ const API_KEY = "P6IfSc5uHWe7okn8G7GGiEWObc48r3yE";
 
 // Рендер карток подій
 
-// function renderEvents(page) {
-// 	const start = (page - 1) * eventsPerPage;
-// 	const end = start + eventsPerPage;
-// 	const pageEvents = events.slice(start, end);
-// 	heroTitle.innerHTML = pageEvents[0].name;
-//
-// 	eventList.innerHTML = pageEvents
-// 		.map(
-// 			(event) => `
-// 			<li class="event-list-item">
-// 				<div class="event-list-leaf"></div>
-// 				<img class="event-list-img" src="${event.images[0].url}" alt="">
-// 				<h2 class="event-list-title">${event.name}</h2>
-// 				<p class="event-list-date">${event.dates.start.localDate}</p>
-// 				<p class="event-list-location">
-// 					<svg class="event-list-location-icon" width="7px" height="10px"><use href="src/symbol-defs.svg#icon-place"></use></svg>
-// 					${event._embedded.venues[0].name}
-// 				</p>
-// 			</li>
-// 		`
-// 		)
-// 		.join("");
-// }
-
 function renderEvents(page) {
 	const start = (page - 1) * eventsPerPage;
 	const end = start + eventsPerPage;
@@ -86,19 +62,6 @@ function renderEvents(page) {
 		galleryContainer.style.height = document.querySelector(".event-list").offsetHeight + "px";
 	}, 1000);
 }
-
-// Рендер кнопок пагінації
-
-// function renderPagination() {
-// 	const totalPages = Math.ceil(events.length / eventsPerPage);
-// 	let buttons = "";
-//
-// 	for (let i = 1; i <= totalPages; i++) {
-// 		buttons += `<button class="page-btn${i === currentPage ? " active" : ""}" data-page="${i}">${i}</button>`;
-// 	}
-//
-// 	pagination.innerHTML = buttons;
-// }
 
 function renderPagination() {
 	const totalPages = Math.ceil(events.length / eventsPerPage);
@@ -138,8 +101,6 @@ async function getEvents() {
 	res = await res.json();
 
 	events = await res._embedded.events;
-
-	// events = await events.filter((el) => authors.every((authorPhrase) => el._embedded.attractions.some((attr) => String(attr.name).includes(authorPhrase.toLowerCase()))));
 
 	renderEvents(currentPage);
 	renderPagination();
